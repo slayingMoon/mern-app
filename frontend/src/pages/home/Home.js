@@ -18,7 +18,7 @@ const Home = () => {
         };
 
         fetchWorkouts();
-    }, []);
+    }, [dispatch]); //resolve warning 'Reach Hook useEffect has a missing dependency'
 
     return (
         <div className="home">
