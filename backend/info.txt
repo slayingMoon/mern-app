@@ -1,3 +1,0 @@
-when using nodemon locally:
-in package.json add "dev": "nodemon server.js" to scripts.
-in order to run the app use 'npm run dev'
