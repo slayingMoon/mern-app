@@ -1,5 +1,6 @@
 const Workout = require('../models/Workout.js');
 const mongoose = require('mongoose');
+const getEmptyFields = require('../utils/getEmptyFields.js');
 
 // get all workouts
 const getWorkouts = async (req, res) => {
@@ -33,6 +34,12 @@ const getWorkout = async (req, res) => {
 // create new workout
 const createWorkout = async (req, res) => {
     const {title, load, reps} = req.body;
+
+    let emptyFields = getEmptyFields(title, load, reps);
+
+    if(emptyFields.length > 0) {
+        return res.status(400).json({error: 'Please fill in all fields', emptyFields});
+    }
 
     //add document to db
     try {
