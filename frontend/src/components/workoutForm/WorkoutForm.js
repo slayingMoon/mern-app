@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
 import './WorkoutForm.css';
 
 const WorkoutForm = () => {
+    const { dispatch } = useWorkoutsContext();
+
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
@@ -37,6 +40,8 @@ const WorkoutForm = () => {
             setReps('');
             setError(null);
             console.log('new workout added', data);
+            //refreshes the local context of workouts and re-renders the updated collection
+            dispatch({type: 'CREATE_WORKOUT', payload: data});
         }
     };
 
