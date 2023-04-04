@@ -1,9 +1,8 @@
 import { useAuthContext } from "./useAuthContext";
-import { useWorkoutsContext } from './useWorkoutsContext';
 
 export const useLogout = () => {
     const { dispatch } = useAuthContext();
-    const { dispatch: workoutsDispatch } = useWorkoutsContext(); //calling dispatch by using its newly assigned name
+    //const { dispatch: workoutsDispatch } = useWorkoutsContext(); //calling dispatch by using its newly assigned name
 
     const logout = () => {
         // remove user from storage
@@ -11,8 +10,8 @@ export const useLogout = () => {
 
         // dispatch logout action
         dispatch({type: 'LOGOUT'});
-        //clearing the workouts context on user logout
-        workoutsDispatch({type: 'SET_WORKOUTS', payload: null});
+        //clearing the workouts context on user logout(not needed when everyone, even logged out users can see workouts)
+        // workoutsDispatch({type: 'SET_WORKOUTS', payload: null});
     };
 
     return { logout };
