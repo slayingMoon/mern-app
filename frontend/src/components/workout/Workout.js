@@ -34,7 +34,7 @@ const Workout = ({workout}) => {
             <p><strong>Load (kg): </strong>{workout.load}</p>
             <p><strong>Reps: </strong>{workout.reps}</p>
             <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
-            {user._id === workout.user_id && <span className="material-symbols-outlined" onClick={handleClick}>delete</span>}
+            {user && user._id === workout.user_id && <span className="material-symbols-outlined" onClick={handleClick}>delete</span>}
         </div>
     )
 };
