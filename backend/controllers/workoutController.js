@@ -4,8 +4,9 @@ const getEmptyFields = require('../utils/getEmptyFields.js');
 
 // get all workouts
 const getWorkouts = async (req, res) => {
+    const user_id = req.user._id;
     try {
-        const workouts = await Workout.find({}).sort({createdAt: -1});
+        const workouts = await Workout.find({ user_id }).sort({createdAt: -1});
         res.status(200).json(workouts);
     }catch(err) {
         res.status(400).json({error: err.message});
@@ -43,7 +44,8 @@ const createWorkout = async (req, res) => {
 
     //add document to db
     try {
-        const workout = await Workout.create({title, load, reps});
+        const user_id = req.user._id;
+        const workout = await Workout.create({title, load, reps, user_id});
         res.status(200).json(workout);
     }catch(err) {
         res.status(400).json({error: err.message});
