@@ -11,11 +11,7 @@ const Home = () => {
     
     useEffect(() => {
         const fetchWorkouts = async () => {
-            const response = await fetch('/api/workouts', {
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
-            }); //not declaring the port number e.g localhost:4000, as we're using a proxy
+            const response = await fetch('/api/workouts'); //not declaring the port number e.g localhost:4000, as we're using a proxy
             const json = await response.json();
 
             if(response.ok) {
@@ -24,9 +20,11 @@ const Home = () => {
         };
 
         //fetch workouts only if there is a logged user
-        if(user) {
-            fetchWorkouts();
-        }
+        // if(user) {
+        //     fetchWorkouts();
+        // }
+
+        fetchWorkouts(); //fetch workouts for everyone
     }, [dispatch, user]); //resolve warning 'Reach Hook useEffect has a missing dependency'; user needs to be added as a dependency as well
 
     return (
