@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
@@ -12,6 +13,7 @@ export const useLogout = () => {
         dispatch({type: 'LOGOUT'});
         //clearing the workouts context on user logout(not needed when everyone, even logged out users can see workouts)
         // workoutsDispatch({type: 'SET_WORKOUTS', payload: null});
+        redirect('/');
     };
 
     return { logout };
