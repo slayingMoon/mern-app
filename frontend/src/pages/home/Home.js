@@ -28,11 +28,12 @@ const Home = () => {
     }, [dispatch, user]); //resolve warning 'Reach Hook useEffect has a missing dependency'; user needs to be added as a dependency as well
 
     return (
-        <div className="home">
+        <div className={user ? 'home' : 'home-guest'}>
             <div className="workouts">
                 {workouts && workouts.map((workout) => (
                     <Workout key={workout._id} workout={workout}/>
                 ))}
+                {!workouts && <div className="alt-content">There are no workouts yet</div>}
             </div>
             {user && <WorkoutForm />}
         </div>

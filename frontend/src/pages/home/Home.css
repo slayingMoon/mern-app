@@ -3,3 +3,21 @@
     grid-template-columns: 3fr 1fr;
     gap: 100px;
 }
+
+.home-guest {
+    display: grid;
+    justify-items: center;
+}
+
+.workouts {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.alt-content {
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+}
