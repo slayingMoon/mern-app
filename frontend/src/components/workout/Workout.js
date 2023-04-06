@@ -36,8 +36,11 @@ const Workout = ({workout}) => {
             <p><strong>Reps: </strong>{workout.reps}</p>
             <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
             <div className="btns">
+                <Link to={`/workouts/edit/${workout._id}`}>
+                    {user && user._id === workout.user_id && <span className="material-symbols-outlined">edit</span>}
+                </Link>
                 <Link to={`/workouts/${workout._id}`}>
-                <span className="material-symbols-outlined">info</span>
+                    <span className="material-symbols-outlined">info</span>
                 </Link>
                 {user && user._id === workout.user_id && <span className="material-symbols-outlined delete" onClick={handleClick}>delete</span>}
             </div>
